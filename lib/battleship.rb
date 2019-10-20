@@ -5,12 +5,12 @@ Bundler.require
 
 $LOAD_PATH.unshift File.expand_path(__dir__)
 
-require 'board'
+require 'game'
+
 
 class Battleship
   def initialize
-    # set up the board
-    @board = Board.new
+    welcome
   end
 
   def welcome
@@ -21,11 +21,14 @@ class Battleship
 
     if %w[p play].include?(command)
       puts "C'est paaarti"
-      Board.new
+      @game = Game.new
+      @game.play
+
     elsif %w[i instructions].include?(command)
       p 'Tu vas te taper de la lecture'
     elsif %w[q quit].include?(command)
-      p 'tchuss'
+      p 'A la prochaine'
+      
     end
   end
 
